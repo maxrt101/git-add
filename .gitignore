@@ -1,0 +1,10 @@
+
+*.py[cod]
+
+.idea/
+.vscode/
+
+.venv/
+
+.DS_Store
+Thumbs.db
