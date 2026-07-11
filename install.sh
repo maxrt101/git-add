@@ -26,7 +26,7 @@ echo "[!] Don't move $BASE_DIR around, because shortcut scripts created by insta
 cat << EOF > $INSTALL_DIR/gita
 #!/usr/bin/env bash
 source $BASE_DIR/.venv/bin/activate
-python3 $BASE_DIR/gitadd.py
+python3 $BASE_DIR/gitadd.py \$@
 EOF
 
 chmod +x $INSTALL_DIR/gita
@@ -37,7 +37,7 @@ echo "[+] Created 'gita', a shorthand for 'python3 gitadd.py'"
 cat << EOF > $INSTALL_DIR/gitc
 #!/usr/bin/env bash
 source $BASE_DIR/.venv/bin/activate
-python3 $BASE_DIR/gitadd.py --commit
+python3 $BASE_DIR/gitadd.py --commit \$@
 EOF
 
 chmod +x $INSTALL_DIR/gitc
@@ -48,7 +48,7 @@ echo "[+] Created 'gitc', a shorthand for 'python3 gitadd.py --commit'"
 cat << EOF > $INSTALL_DIR/gitp
 #!/usr/bin/env bash
 source $BASE_DIR/.venv/bin/activate
-python3 $BASE_DIR/gitadd.py --commit --push
+python3 $BASE_DIR/gitadd.py --commit --push \$@
 EOF
 
 chmod +x $INSTALL_DIR/gitp
@@ -59,9 +59,20 @@ echo "[+] Created 'gitp', a shorthand for 'python3 gitadd.py --commit --push'"
 cat << EOF > $INSTALL_DIR/gitpu
 #!/usr/bin/env bash
 source $BASE_DIR/.venv/bin/activate
-python3 $BASE_DIR/gitadd.py --commit --push --upstream
+python3 $BASE_DIR/gitadd.py --commit --push --upstream \$@
 EOF
 
 chmod +x $INSTALL_DIR/gitpu
 
 echo "[+] Created 'gitpu', a shorthand for 'python3 gitadd.py --commit --push --upstream'"
+
+
+cat << EOF > $INSTALL_DIR/gitr
+#!/usr/bin/env bash
+source $BASE_DIR/.venv/bin/activate
+python3 $BASE_DIR/gitadd.py --revert \$@
+EOF
+
+chmod +x $INSTALL_DIR/gitr
+
+echo "[+] Created 'gitr', a shorthand for 'python3 gitadd.py --revert'"
