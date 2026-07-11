@@ -22,6 +22,7 @@ fi
 echo "[+] Installing git-add to $INSTALL_DIR from $BASE_DIR"
 echo "[!] Don't move $BASE_DIR around, because shortcut scripts created by install.sh will break"
 
+
 cat << EOF > $INSTALL_DIR/gita
 #!/usr/bin/env bash
 source $BASE_DIR/.venv/bin/activate
@@ -32,6 +33,7 @@ chmod +x $INSTALL_DIR/gita
 
 echo "[+] Created 'gita', a shorthand for 'python3 gitadd.py'"
 
+
 cat << EOF > $INSTALL_DIR/gitc
 #!/usr/bin/env bash
 source $BASE_DIR/.venv/bin/activate
@@ -41,3 +43,25 @@ EOF
 chmod +x $INSTALL_DIR/gitc
 
 echo "[+] Created 'gitc', a shorthand for 'python3 gitadd.py --commit'"
+
+
+cat << EOF > $INSTALL_DIR/gitp
+#!/usr/bin/env bash
+source $BASE_DIR/.venv/bin/activate
+python3 $BASE_DIR/gitadd.py --commit --push
+EOF
+
+chmod +x $INSTALL_DIR/gitp
+
+echo "[+] Created 'gitp', a shorthand for 'python3 gitadd.py --commit --push'"
+
+
+cat << EOF > $INSTALL_DIR/gitpu
+#!/usr/bin/env bash
+source $BASE_DIR/.venv/bin/activate
+python3 $BASE_DIR/gitadd.py --commit --push --upstream
+EOF
+
+chmod +x $INSTALL_DIR/gitpu
+
+echo "[+] Created 'gitpu', a shorthand for 'python3 gitadd.py --commit --push --upstream'"
