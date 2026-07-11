@@ -23,5 +23,5 @@ After installing, you'll have 2 brand-new scripts in your `$PATH`:
  - `gita`: Activates `.venv` and runs `gitadd.py` as-is 
  - `gita`: Activates `.venv` and runs `gitadd.py --commit`, which triggers a `git commit -a` after staging selected changes 
 
-Run either in some git project, select files via arrow keys and space, hit enter when ready.  
+Run either of those in some git project, select files via arrow keys and space, hit enter when ready.  
 If using `gitc` it will prompt for a commit message after selecting files.  
