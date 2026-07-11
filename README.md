@@ -19,9 +19,12 @@ Note that `INSTALL_DIR` must be in `$PATH` for this to work.
 
 ### Usage
 
-After installing, you'll have 2 brand-new scripts in your `$PATH`: 
+After installing, you'll have 5 brand-new scripts in your `$PATH`: 
  - `gita`: Activates `.venv` and runs `gitadd.py` as-is 
- - `gita`: Activates `.venv` and runs `gitadd.py --commit`, which triggers a `git commit -a` after staging selected changes 
+ - `gitc`: Activates `.venv` and runs `gitadd.py --commit`, which triggers a `git commit -a` after staging selected changes 
+ - `gitp`: Activates `.venv` and runs `gitadd.py --commit --push`, which runs `git push` after commiting
+ - `gitpu`: Activates `.venv` and runs `gitadd.py --commit --push --upstream`, which runs `git push -u origin HEAD` after commiting
+ - `gitr`: Activates `.venv` and runs `gitadd.py --revert`, which resets selected tracked files to `HEAD` and deletes untracked
 
 Run either of those in some git project, select files via arrow keys and space, hit enter when ready.  
 If using `gitc` it will prompt for a commit message after selecting files.  
