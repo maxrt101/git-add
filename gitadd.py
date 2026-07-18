@@ -3,6 +3,7 @@ import questionary
 import subprocess
 import argparse
 import sys
+import os
 
 
 # QUESTIONARY_STYLE = questionary.Style([
@@ -42,6 +43,18 @@ class git:
             files.append(git.File(line[:2], line[3:]))
 
         return files
+
+    @staticmethod
+    def chroot():
+        try:
+            repo_root = subprocess.run(
+                ['git', 'rev-parse', '--show-toplevel'],
+                capture_output=True, text=True, check=True
+            ).stdout.strip()
+            os.chdir(repo_root)
+        except subprocess.CalledProcessError:
+            print('Error: Not inside a git repository')
+            sys.exit(1)
 
 
 def do_add(changed: list[git.File]):
@@ -125,6 +138,8 @@ def run(commit: bool, push: bool, upstream: bool, revert: bool, yes: bool):
 
 
 def main():
+    git.chroot()
+
     parser = argparse.ArgumentParser(prog='git-add')
 
     parser.add_argument('-c', '--commit',   action='store_true', help='Commit changes after selecting files', dest='commit')
